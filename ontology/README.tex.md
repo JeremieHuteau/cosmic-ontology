@@ -1,5 +1,3 @@
- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
-
 # Definitions
 
 ## Classes
@@ -52,8 +50,8 @@ $$Star ~ \equiv ~ CelestialBody ~ \sqcap ~ \dots$$
 
 A ***n*-ary star** is a **Star** that orbits *n*-1 **Stars**
 \begin{align}
-UnaryStar ~ &\equiv ~ Star ~ \sqcap ~ (=0 ~ orbits.Star) \\\\
-BinaryStar ~ &\equiv ~ Star ~ \sqcap ~ (=1 ~ orbits.Star) \\\\
+UnaryStar ~ &\equiv ~ Star ~ \sqcap ~ (=0 ~ orbits.Star) \\
+BinaryStar ~ &\equiv ~ Star ~ \sqcap ~ (=1 ~ orbits.Star) \\
 TernaryStar ~ &\equiv ~ Star ~ \sqcap ~ (=2 ~ orbits.Star)
 \end{align}
 
