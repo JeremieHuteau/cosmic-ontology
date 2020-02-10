@@ -1,0 +1,65 @@
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2>
+
+
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Binary>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Star>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Composite>
+
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Galaxy>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Composite>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Nebulae>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Non_Composite>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Non_Composite>
+
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Planet>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Non_Composite>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Planetary_System>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Composite>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Star>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Non_Composite>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Ternary>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Star>
+    
+    
+Class: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Unary>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#Star>
+    
+    
