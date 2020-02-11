@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#"
+     xml:base="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:celestialobjects="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#contains">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isMadeOf"/>
+        <rdfs:comment>Set theory operator (non-transitive)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#hasBarycenter -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#hasBarycenter">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isBarycenterOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#LocatedThing"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#hasOrbitalSystemPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#hasOrbitalSystemPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#contains"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isInOrbitalSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isBarycenterOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isBarycenterOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#partOf"/>
+        <rdfs:comment>Set theory operator (non-transitive)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isInOrbitalSystem -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isInOrbitalSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isIn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#LocatedThing"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#OrbitalSystem"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#hasBarycenter"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#orbits"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isBarycenterOf"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isMadeOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isMadeOf">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#partOf"/>
+        <rdfs:comment>Mereologic operator (transitive)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isOrbitedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#isOrbitedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#orbits"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#orbits -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#orbits">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#Location"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#partOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#partOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment>Mereologic operator (transitive)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#LocatedThing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#LocatedThing">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#Location"/>
+        <rdfs:comment>A LocatedThing is a Thing that have a unique Location</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#Location"/>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#OrbitalSystem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#OrbitalSystem">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#LocatedThing"/>
+        <rdfs:comment>An OrbitalSystem is a Thing whose location is a reference center for the orbit of other elements.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH">
+        <hasBarycenter rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_BC"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_BC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_BC">
+        <orbits rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM_BC"/>
+        <rdfs:comment>Barycenter of the Earth</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM">
+        <hasBarycenter rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM_BC"/>
+        <isInOrbitalSystem rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#SOLAR_SYSTEM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM_BC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM_BC">
+        <rdfs:comment>Barycenter of the Earth-Moon system</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#MOON -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#MOON">
+        <hasBarycenter rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#MOON_BC"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#MOON_BC -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#MOON_BC">
+        <orbits rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#EARTH_SYSTEM_BC"/>
+        <rdfs:comment>Barycenter of the Moon</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#SOLAR_SYSTEM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#SOLAR_SYSTEM"/>
+    
+
+
+    <!-- http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#SUN -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#SUN">
+        <isInOrbitalSystem rdf:resource="http://www.semanticweb.org/pPomCo/ontologies/2020/1/celestialobjects#SOLAR_SYSTEM"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
