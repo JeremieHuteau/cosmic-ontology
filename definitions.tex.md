@@ -61,8 +61,6 @@ $$CelestialObject ~ \sqsubseteq ~ Object$$
 
 *Subclasses:* CelestialBody, Galaxy, PlanetarySystem
 
----
-
 #### CelestialBody
 
 A celestial body is an atomic celestial object (that is, an object that follow the astronomocal definition)
@@ -70,8 +68,6 @@ A celestial body is an atomic celestial object (that is, an object that follow t
 $$CelestialBody ~ \sqsubseteq ~ CelestialObject$$
 
 *Subclasses:* Moon, Planet, Star, Nebula
-
----
 
 #### OrbitingSystem
 
@@ -83,8 +79,6 @@ OrbitingSystem ~ & \equiv ~ Object ~ \sqcap ~ (\geq 1 ~ hasOrbitingComponent.Obj
 
 *Subclasses:* StarSystem, PlanetarySystem, SatelliteSystem, Galaxy
 
---- 
-
 #### Satellite
 
 A satellite is an object.
@@ -93,27 +87,23 @@ $$Satellite ~ \sqsubseteq ~ Object$$
 
 *Subclasses:* Moon
 
----
-
 #### Moon
 
 A moon is a celestial body that is a natural satellite
 
 $$Moon ~ \sqsubseteq ~ Satellite ~ \sqcap ~ CelestialBody$$
 
----
-
 #### Planet
 
----
+...
 
 #### Star
 
----
+...
 
 #### Nebula
 
----
+...
 
 #### StarSystem
 
@@ -123,8 +113,6 @@ $$StarSystem ~ \equiv ~ (\forall hasOrbitingComponent.Star)$$
 
 *Subclasses:* UnaryStar, BinaryStar, TernaryStar
 
----
-
 #### N-ary stars
 
 Definition for UnaryStar, BinaryStar and TernaryStar
@@ -133,23 +121,17 @@ A *n*-ary star is a star system made of *n* stars
 
 $$NaryStar ~ \equiv ~ (= n ~ hasOrbitingComponent.Star)$$
 
----
-
 #### Satellite system
 
 A satellite system is an orbiting system made of planets and satellites
 
 $$SatelliteSystem ~ \equiv ~ (\forall hasOrbitingComponent.(Planet ~ \sqcup ~ Satellite))$$
 
----
-
 #### PlanetarySystem
 
 A planetary system is an orbiting system made of a star system and "other smaller objects"
 
 $$PlanetarySystem ~ \equiv ~ (\forall hasOrbitingComponent.(StarSystem ~ \sqcup ~ SatelliteSystem ~ \sqcup ~ \dots)$$
-
----
 
 #### Galaxy
 
@@ -173,8 +155,6 @@ $$\begin{align}
 isBarycenterOf & ~ : ~ Point \to Object \\
 isBarycenterOf & ~ \equiv ~ hasBarycenter^-
 \end{align}$$
-
----
 
 ### Orbiting
 
