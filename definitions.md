@@ -167,7 +167,7 @@ Objects have a barycenter
 
 Thus points are barycenter of objects
 
-<p align="center"><img src="/tex/e6248b98b1982573b88920f3f95aae1a.svg?invert_in_darkmode&sanitize=true" align=middle width=274.4031576pt height=65.67319605pt/></p>
+<p align="center"><img src="/tex/10b74b04529755640c27fb27ea8e55d4.svg?invert_in_darkmode&sanitize=true" align=middle width=274.4031576pt height=41.01566205pt/></p>
 
 ---
 
@@ -183,14 +183,14 @@ Thus points are orbited by points:
 
 Objects orbit with another object iif their barycenters orbit around the same point:
 
-<p align="center"><img src="/tex/0cce4fc60dd9882159a71d975a76e981.svg?invert_in_darkmode&sanitize=true" align=middle width=598.4964908999999pt height=63.92694825pt/></p>
+<p align="center"><img src="/tex/c0eaaafc9214dee482c0a4e16fa4473e.svg?invert_in_darkmode&sanitize=true" align=middle width=598.4964908999999pt height=39.2694126pt/></p>
 
 Objects orbit in an orbiting system:
 
-<p align="center"><img src="/tex/045ec87c1eb4a932c9c3fc4ba2bc635d.svg?invert_in_darkmode&sanitize=true" align=middle width=468.17840025pt height=63.92694825pt/></p>
+<p align="center"><img src="/tex/9b457f54ed73c00ed612fbad325ab2ad.svg?invert_in_darkmode&sanitize=true" align=middle width=468.17840025pt height=39.2694126pt/></p>
 
 Thus orbiting system has orbiting components:
-<p align="center"><img src="/tex/9c709c648442bbe5a6476852e8f82d7b.svg?invert_in_darkmode&sanitize=true" align=middle width=391.81789514999997pt height=65.67319605pt/></p>
+<p align="center"><img src="/tex/58664d61fac9cf02ef5687e4906dea9b.svg?invert_in_darkmode&sanitize=true" align=middle width=391.81789514999997pt height=41.01566205pt/></p>
 
 
 
