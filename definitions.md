@@ -61,8 +61,6 @@ A celestial object is an object that is considered by astronomist as a "celestia
 
 *Subclasses:* CelestialBody, Galaxy, PlanetarySystem
 
----
-
 #### CelestialBody
 
 A celestial body is an atomic celestial object (that is, an object that follow the astronomocal definition)
@@ -70,8 +68,6 @@ A celestial body is an atomic celestial object (that is, an object that follow t
 <p align="center"><img src="/tex/f4dd347035ce14cdd47d90364db92fb3.svg?invert_in_darkmode&sanitize=true" align=middle width=253.17494069999998pt height=14.611878599999999pt/></p>
 
 *Subclasses:* Moon, Planet, Star, Nebula
-
----
 
 #### OrbitingSystem
 
@@ -81,8 +77,6 @@ An orbiting system is an object whose barycenter is orbited by the barycenter of
 
 *Subclasses:* StarSystem, PlanetarySystem, SatelliteSystem, Galaxy
 
---- 
-
 #### Satellite
 
 A satellite is an object.
@@ -91,27 +85,23 @@ A satellite is an object.
 
 *Subclasses:* Moon
 
----
-
 #### Moon
 
 A moon is a celestial body that is a natural satellite
 
 <p align="center"><img src="/tex/86b4ca812523104f7ae851fec4eba6f8.svg?invert_in_darkmode&sanitize=true" align=middle width=273.80992319999996pt height=14.611878599999999pt/></p>
 
----
-
 #### Planet
 
----
+...
 
 #### Star
 
----
+...
 
 #### Nebula
 
----
+...
 
 #### StarSystem
 
@@ -121,8 +111,6 @@ A star system is an orbiting system made of stars only
 
 *Subclasses:* UnaryStar, BinaryStar, TernaryStar
 
----
-
 #### N-ary stars
 
 Definition for UnaryStar, BinaryStar and TernaryStar
@@ -131,23 +119,17 @@ A *n*-ary star is a star system made of *n* stars
 
 <p align="center"><img src="/tex/64bde763e5821069967e1e391f4bac5a.svg?invert_in_darkmode&sanitize=true" align=middle width=364.42559339999997pt height=16.438356pt/></p>
 
----
-
 #### Satellite system
 
 A satellite system is an orbiting system made of planets and satellites
 
 <p align="center"><img src="/tex/9d4b5f833dfb579ad03602278b36f4bb.svg?invert_in_darkmode&sanitize=true" align=middle width=507.2573781pt height=16.438356pt/></p>
 
----
-
 #### PlanetarySystem
 
 A planetary system is an orbiting system made of a star system and "other smaller objects"
 
 <p align="center"><img src="/tex/820eef59e87c82de7a589e65df9b3d1a.svg?invert_in_darkmode&sanitize=true" align=middle width=661.27634595pt height=16.438356pt/></p>
-
----
 
 #### Galaxy
 
@@ -168,8 +150,6 @@ Objects have a barycenter
 Thus points are barycenter of objects
 
 <p align="center"><img src="/tex/10b74b04529755640c27fb27ea8e55d4.svg?invert_in_darkmode&sanitize=true" align=middle width=274.4031576pt height=41.01566205pt/></p>
-
----
 
 ### Orbiting
 
