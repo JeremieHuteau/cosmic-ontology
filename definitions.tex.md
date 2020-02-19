@@ -170,7 +170,7 @@ $$Object ~ \sqsubseteq ~ (= 1 ~ hasBarycenter.Point)$$
 Thus points are barycenter of objects
 
 $$\begin{align}
-isBarycenterOf & ~ : ~ Point \to Object \\\\
+isBarycenterOf & ~ : ~ Point \to Object \\
 isBarycenterOf & ~ \equiv ~ hasBarycenter^-
 \end{align}$$
 
@@ -189,20 +189,20 @@ $$isOrbitedBy ~ \equiv ~ orbitAround^-$$
 Objects orbit with another object iif their barycenters orbit around the same point:
 
 $$\begin{align}
-orbitWith ~ & : ~ Object \to Object \\\\
+orbitWith ~ & : ~ Object \to Object \\
 orbitWith ~ & \equiv ~ hasBarycenter ~ \circ ~ orbitAround ~ \circ ~ isOrbitedBy ~ \circ ~ isBarycenterOf
 \end{align}$$
 
 Objects orbit in an orbiting system:
 
 $$\begin{align}
-orbitsIn ~ & : ~ Object \to OrbitingSystem \\\\
+orbitsIn ~ & : ~ Object \to OrbitingSystem \\
 orbitsIn ~ & \equiv ~ hasBarycenter ~ \circ ~ orbitAround ~ \circ ~ isBarycenterOf
 \end{align}$$
 
 Thus orbiting system has orbiting components:
 $$\begin{align}
-hasOrbitingComponent ~ & : ~ OrbitingSystem \to Object\\\\
+hasOrbitingComponent ~ & : ~ OrbitingSystem \to Object\\
 hasOrbitingComponent ~ & \equiv ~ orbitsIn^-
 \end{align}$$
 
