@@ -1,0 +1,75 @@
+#+TITLE: Ontologie des astres cosmiques
+#+DATE: Printemps 2019
+#+AUTHOR: J. HUTEAU, Q. MARTY, P. POMERET-COQUOT
+#+OPTIONS: toc:nil
+
+* Consigne
+
+- faire au moins 2 pages A4 (taille de police 12).
+- présenter l’ontologie, en mettant notamment en évidence les classes et/ou relations qui pourraient être difficiles à retrouver lorsqu’on explore le fichier OWL.
+- traduire les axiomes de l’ontologie en logique de description, en précisant quelle est la logique de description minimale permettant de l’écrire.
+- discuter de formalisations alternatives qui auraient pu être proposées. Notamment, pour 3 des axiomes du type ‘C SubClassOf [expression complexe]’ de l’ontologie, expliquer pourquoi ils n’auraient pas pu être mis sous la forme ‘C EquivalentTo [expression complexe]’ en donnant un contre-exemple pour chacun.
+- présenter 3 questions de compétences (en langage naturel) auxquelles peut répondre l’ontologie, et expliciter les requêtes SPARQL correspondant à chacune de ces 3 questions de compétence.
+- préciser quel raisonneur a prouvé l’ontologie cohérente.
+
+*La priorité doit être donnée à la qualité de l’ontologie et à sa justification plus qu’à la quantité (nombre de classes, etc.)*
+
+* Introduction
+
+Ce rapport présente l'ontologie que nous avons réalisé dans le cadre du projet pour l'UE /Ontologie/ (M2DC).
+
+L'ontologie cosmique a pour objectif de \dots
+
+La première section présente \dots
+
+* Présentation de l'ontologie
+** Choix de la formalisation
+
+ - BFO : relations le monde réel.
+ - DBPedia : beaucoup d'instances
+
+** Principales classes et relations
+
+L'ontologie s'intéresse à représenter les corps et objets célestes. 
+
+Un corps céleste est un object /atomique/ (pour un astronome, /p. ex./ une planète), alors qu'un objet peut être composé de plusieurs astres (/p. ex./ une galaxie). Néanmoins, tous les objets n'ont pas le statut d'objet céleste : seuls ceux reconnus par l'astronomie ont ce qualificatif.
+
+Nous avons souhaité définir la relation d'orbitage \dots
+
+
+* Définitions 
+
+- Star :: Une étoile est un corps céleste qui \dots
+	  $$Star ~ \equiv ~ CelestialBody ~ \sqcap ~ \dots$$
+- Planet :: Une planète est un corps céleste qui \dots
+	    $$Planet ~ \equiv ~ CelestialBody ~ \sqcap ~ \dots$$
+
+* Cohérence de l'ontologie
+
+Nous utilisons le raisonneur =Hermit= pour assurer la cohérence de l'ontologie. Cela nous permet aussi d'inférer des relations, telles que \dots
+
+* Trois questions de compétences
+
+** Exemple: Quels sont les satellites des planètes du système solaire ?
+
+\scriptsize
+#+BEGIN_SRC sparql
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+SELECT ?planet, ?sat
+WHERE {
+    ?sat dbp:satelliteOf ?planet.
+    FILTER(?planet IN (
+        dbr:Mercury, dbr:Venus, dbr:Earth, dbr:Mars, dbr:Jupiter,
+	dbr:Saturn, dbr:Uranus, dbr:Neptune
+    ))
+}
+#+END_SRC
+\normalsize
+
+
+** Quels corps gravitent dans le système solaire ?
+
+** Quelle planète du système solaire possède le plus de lunes ?
+
+** Quelle est la masse du système solaire ?
