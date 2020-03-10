@@ -1,0 +1,371 @@
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: ro: <http://purl.obolibrary.org/obo/ro/ro-base.owl#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology>
+
+Import: <http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl>
+
+AnnotationProperty: owl:incompatibleWith
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasBarycenter>
+
+    Annotations: 
+        rdfs:comment "The barycenter of an object"
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasOrbitingComponent>
+
+    Annotations: 
+        rdfs:comment "Property of an orbiting system to have orbiting components 
+i.e. objects whose barycenter orbit around the barycenter of the given system"
+    
+    SubPropertyOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasPart>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsIn>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasPart>
+
+    Annotations: 
+        rdfs:comment "Mereology"
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isPartOf>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>
+
+    Annotations: 
+        rdfs:comment "The object this point is a barycenter of"
+    
+    Domain: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Point>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasBarycenter>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isCanonicallyGreaterThan>
+
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isCanonicallyLowerThan>
+
+    InverseOf: 
+        <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#hasBarycenter>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isOrbitedBy>
+
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isPartOf>
+
+    Annotations: 
+        rdfs:comment "Mereology"
+    
+    Characteristics: 
+        Transitive
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasPart>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround>
+
+    Annotations: 
+        rdfs:comment "Property of a barycenter to orbit around another point"
+    
+    Domain: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Point>
+    
+    Range: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Point>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isOrbitedBy>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsIn>
+
+    Annotations: 
+        rdfs:comment "Property giving the system an orbiting object orbits in"
+    
+    SubPropertyOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isPartOf>
+    
+    SubPropertyChain: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasBarycenter> o <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround> o <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasOrbitingComponent>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsWith>
+
+    Annotations: 
+        rdfs:comment "Property of objects whose barycenter orbit around a common point"
+    
+    SubPropertyChain: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasBarycenter> o <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround> o <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isOrbitedBy> o <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>
+    
+    Characteristics: 
+        Symmetric,
+        Transitive
+    
+    
+ObjectProperty: <http://www.semanticweb.org/persephone/ontologies/2020/1/untitled-ontology-2#hasBarycenter>
+
+    Characteristics: 
+        Transitive
+    
+    InverseOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isCanonicallyLowerThan>
+    
+    
+Class: <http://purl.obolibrary.org/obo/BFO_0000018>
+
+    
+Class: <http://purl.obolibrary.org/obo/BFO_0000030>
+
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#BinaryStar>
+
+    Annotations: 
+        owl:incompatibleWith "An orbiting system that is made of two stars"
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#StarSystem>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialBody>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialObject>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialObject>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#PhysicalObject>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Galaxy>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialObject>,
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#OrbitingSystem>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Moon>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialBody>,
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Satellite>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Nebula>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialBody>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#OrbitingSystem>
+
+    Annotations: 
+        owl:incompatibleWith "A system whose barycenter is orbited by other points"
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#PhysicalObject>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#PhysicalObject>
+
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/BFO_0000030>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Planet>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialBody>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#PlanetarySystem>
+
+    Annotations: 
+        owl:incompatibleWith "A system that is made of a star system and other 'smaller' orbiting objects"
+    
+    EquivalentTo: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#OrbitingSystem>
+         and (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasOrbitingComponent> only 
+            (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SatelliteSystem> or <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#StarSystem>))
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialObject>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Point>
+
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/BFO_0000018>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Satellite>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#PhysicalObject>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SatelliteSystem>
+
+    Annotations: 
+        owl:incompatibleWith "An orbiting system that is made of planets and satellites only"
+    
+    EquivalentTo: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#OrbitingSystem>
+         and (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasOrbitingComponent> only 
+            (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Planet> or <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Satellite>))
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Star>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialBody>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#StarSystem>
+
+    Annotations: 
+        owl:incompatibleWith "An orbiting system that is made of stars only"
+    
+    EquivalentTo: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#OrbitingSystem>
+         and (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasOrbitingComponent> only <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Star>)
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#TernaryStar>
+
+    Annotations: 
+        owl:incompatibleWith "An orbiting system that is made of three stars"
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#StarSystem>
+    
+    
+Class: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#UnaryStar>
+
+    Annotations: 
+        owl:incompatibleWith "An orbiting system that is made of one star"
+    
+    EquivalentTo: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#StarSystem>
+         and (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasBarycenter> min 1 (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isOrbitedBy> only (<http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf> min 1 <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Star>)))
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#StarSystem>
+    
+    
+Individual: <http://dbpedia.org/page/Solar_System>
+
+    SameAs: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH>
+
+    Types: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Planet>
+    
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#hasBarycenter>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_BC>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_BC>
+
+    Annotations: 
+        rdfs:comment "Barycenter of Earth"
+    
+    Types: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Point>
+    
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_MOON_SYSTEM_BC>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_MOON_SYSTEM>
+
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_MOON_SYSTEM_BC>
+
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_MOON_SYSTEM>,
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM_BC>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#MOON>
+
+    Types: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Moon>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#MOON_BC>
+
+    Annotations: 
+        rdfs:comment "Barycenter of the moon"
+    
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#MOON>,
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsAround>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_MOON_SYSTEM_BC>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM>
+
+    Types: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#PlanetarySystem>
+    
+    SameAs: 
+        <http://dbpedia.org/page/Solar_System>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM_BC>
+
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#isBarycenterOf>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SUN>
+
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsIn>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SUN_SYSTEM>
+    
+    
+Individual: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SUN_SYSTEM>
+
+    Types: 
+        <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#UnaryStar>
+    
+    Facts:  
+     <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#orbitsIn>  <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM>
+    
+    
