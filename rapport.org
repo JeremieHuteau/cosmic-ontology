@@ -3,8 +3,7 @@
 #+AUTHOR: J. HUTEAU, Q. MARTY, P. POMERET-COQUOT
 #+OPTIONS: toc:nil
 
-* Consigne
-
+#+BEGIN_COMMENT
 - faire au moins 2 pages A4 (taille de police 12).
 - présenter l’ontologie, en mettant notamment en évidence les classes et/ou relations qui pourraient être difficiles à retrouver lorsqu’on explore le fichier OWL.
 - traduire les axiomes de l’ontologie en logique de description, en précisant quelle est la logique de description minimale permettant de l’écrire.
@@ -13,63 +12,299 @@
 - préciser quel raisonneur a prouvé l’ontologie cohérente.
 
 *La priorité doit être donnée à la qualité de l’ontologie et à sa justification plus qu’à la quantité (nombre de classes, etc.)*
+#+END_COMMENT
 
-* Introduction
+\section*{Introduction}
 
 Ce rapport présente l'ontologie que nous avons réalisé dans le cadre du projet pour l'UE /Ontologie/ (M2DC).
 
-L'ontologie cosmique a pour objectif de \dots
-
-La première section présente \dots
+La première section présente l'ontologie, ses axes principaux et ses dépendances. 
+La seconde section liste les définitions, réparties en trois chapitres : taxonomie des objets célestes, relation d'orbitage, taxonomie des systèmes orbitaux. 
+La troisième section assure de la cohérence de notre travail. 
+La quatrième section contient les trois questions de compétances demandées.
+La dernière section est la conclusion.
 
 * Présentation de l'ontologie
-** Choix de la formalisation
 
- - BFO : relations le monde réel.
- - DBPedia : beaucoup d'instances
+Nous avons réalisé une ontologie qui comporte trois parties :
+ - Une taxonomie des corps et objets célestes, selon les définitions astronomiques académiques
+ - Une représentation réaliste de la relation d'orbitage en physique newtonienne.
+ - Une taxonomie des systèmes orbitaux classiques (galaxies, systèmes planétaires, etc.)
 
-** Principales classes et relations
+Pour cela, nous avons construit notre ontologie sur BFO. En effet, elle est
+réaliste, et cherche à représenter le meilleur état des connaissances.
 
-L'ontologie s'intéresse à représenter les corps et objets célestes. 
-
-Un corps céleste est un object /atomique/ (pour un astronome, /p. ex./ une planète), alors qu'un objet peut être composé de plusieurs astres (/p. ex./ une galaxie). Néanmoins, tous les objets n'ont pas le statut d'objet céleste : seuls ceux reconnus par l'astronomie ont ce qualificatif.
-
-Nous avons souhaité définir la relation d'orbitage \dots
+Nous avons souhaité utiliser aussi BDPedia, afin de profiter des ressources et relations existantes.
+Néanmoins, nous n'avons pas pu importer cette ontologie pour des raisons de performances. 
+Nous le regrettons car il nous semblait intéressant de pouvoir profiter des nombreuses données telles
+que les masses, tailles, etc. des astres célestres. Nous avons tout de même utilisé quelques ressources issues de DBpedia
+pour illustrer le principe, sans pouvoir utiliser les relations qui leur sont attachées.
 
 
 * Définitions 
 
-- Star :: Une étoile est un corps céleste qui \dots
-	  $$Star ~ \equiv ~ CelestialBody ~ \sqcap ~ \dots$$
-- Planet :: Une planète est un corps céleste qui \dots
-	    $$Planet ~ \equiv ~ CelestialBody ~ \sqcap ~ \dots$$
+** Taxonomie : les objets et corps célestes
 
-* Cohérence de l'ontologie
+Un objet céleste n'a pas de définition autre que celle d'être académiquement considéré comme tel.
+Par exemple, les galaxies comme les planètes sont des objets célestes, mais
+les nuages de gaz et les fusées n'en sont pas.
 
-Nous utilisons le raisonneur =Hermit= pour assurer la cohérence de l'ontologie. Cela nous permet aussi d'inférer des relations, telles que \dots
+La notion de corps céleste spécialise celle d'objet céleste : 
+un corps céleste est considéré comme atomique par un astronome. Par exemple, les planètes sont des corps célestes,
+mais pas les galaxies.
 
-* Trois questions de compétences
+Les corps et les objets célestes sont des agrégats : ils sont constitués de roche, de gaz, etc. /in fine/ de particules élémentaires.
 
-** Exemple: Quels sont les satellites des planètes du système solaire ?
+Pour cette taxonomie, nous effectuons donc un travail d'énumération et de classification (figure [[fig:taxo]]). 
+Les concepts introduits sont annotés.
 
+#+CAPTION: Taxonomie : arborescence des concepts
+#+NAME: fig:taxo
+#+ATTR_LATEX: :width 150px
+[[./ims/concepts.png]]
+
+- CelestialThing :: Une /chose céleste/ est un agrégat qui possède un barycentre. \\
+		    Tous les objets célestes sont des sous-classes de CelestialThing. 
+		    La notion de barycentre sert à la formalisation de la relation d'orbitage (voir chapitre suivant). \\
+		    /Note :/ Dans notre cas nous pouvons utiliser une équivalence, mais nous préférons une inclusion.
+		    Ainsi, notre ontologie peut être étendue avec d'autres concepts, pouvant eux-aussi être des
+		    agrégats possédant un barycentre.
 \scriptsize
-#+BEGIN_SRC sparql
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX dbr: <http://dbpedia.org/resource/>
-SELECT ?planet, ?sat
-WHERE {
-    ?sat dbp:satelliteOf ?planet.
-    FILTER(?planet IN (
-        dbr:Mercury, dbr:Venus, dbr:Earth, dbr:Mars, dbr:Jupiter,
-	dbr:Saturn, dbr:Uranus, dbr:Neptune
-    ))
-}
-#+END_SRC
+$$CelestialThing ~ \sqsubseteq ~ \text{bfo:"object aggregate"} ~ \sqcap ~ (=1 ~ hasBarycenter.Point)$$
+\normalsize
+
+- CelestialObject :: Un /objet céleste/ est une chose céleste qui correspond à la définition académique (/a priori/ arbitraire).
+\scriptsize
+$$CelestialObject ~ \sqsubseteq ~ CelestialThing$$
 \normalsize
 
 
-** Quels corps gravitent dans le système solaire ?
+- CelestialBody :: Un /corps céleste/ est une chose céleste qui correspond à la définition académique (/a priori/ arbitraire).
+\scriptsize
+$$CelestialBody ~ \sqsubseteq ~ CelestialThing$$
+\normalsize
 
-** Quelle planète du système solaire possède le plus de lunes ?
 
-** Quelle est la masse du système solaire ?
+- Asteroid :: Un /astéroide/ est un corps céleste dont la taille est inférieure à 1000. \\
+	      /Note :/ nous devons utiliser \sqsubseteq (et non pas \equiv) car d'autres corps célestes peuvent
+	      avoir une taille inférieure à 1000 (p. ex. un trou noir).
+\scriptsize
+$$Asteroid ~ \sqsubseteq ~ CelestialBody ~ \sqcap ~ (=1 ~ hasSize.\text{[<1000\hat{}\hat{}xsd:double]})$$
+\normalsize
+
+
+- BlackHole :: Un trou noir est un corps céleste dont la taille est inférieure à 1000 et la masse supérieure à 10. \\
+	       /Note :/ nous pouvons utiliser une équivalence car cela illustre une loi physique : tout objet ayant de telles
+	       masse et taille est un trou noir.
+\scriptsize
+$$BlackHole ~ \equiv ~ CelestialBody ~ \sqcap ~ (=1 ~ hasSize.\text{[<1000\hat{}\hat{}xsd:double]}) ~ \sqcap ~  (=1 ~ hasMass.\text{[>10\hat{}\hat{}xsd:double]})$$
+\normalsize
+
+- Planet :: Une /planète/ est un corps céleste dont la masse est supérieure à 10^{-5}. \\
+	    /Note :/ il faut utiliser \sqsubseteq car d'autres objets célestes ont une telle masse (p. ex. une étoile)
+\scriptsize
+$$Planel ~ \sqsubseteq ~ CelestialBody ~ \sqcap ~ (=1 ~ hasMass.\text{[<1E-5\hat{}\hat{}xsd:double]})$$
+\normalsize
+
+
+- Moon :: Une /lune/ est un corps céleste qui est un satellite naturel (voir chapitre suivant)
+\scriptsize
+$$Moon ~ \sqsubseteq ~ CelestialBody ~ \sqcap ~ Satellite$$
+\normalsize
+
+
+- Star :: Une étoile est un corps céleste dont la luminosité est supérieure à 0.
+\scriptsize
+$$Star ~ \equiv ~ CelestialBody ~ \sqcap ~(=1 ~ hasLuminosity.\text{[>0\hat{}\hat{}xsd:double]})$$
+\normalsize
+
+
+** Relations définissant les orbites
+
+Nous avons porté une attention particulière à la relation d'orbitage. 
+En effet, c'est une relation qui est souvent mal définie. Par exemple pour DBPedia, nous n'avons que la relation
+satelliteOf, qui ne permet pas de représenter deux corps similaires orbitant ensemble, telle une étoile double.
+
+Nous utilisons ce paradigme : les /choses/ orbitent ensemble, et forment ainsi un système orbital 
+qui est lui-aussi une /chose/.
+Plus dans le détail : les /choses/ ont un barycentre qui est un /point/. 
+Les /points/ peuvent orbiter autour d'autres /points/. Il s'agit de la représentation classique en physique newtonienne.
+
+Par exemple, dans le système-jouet à trois corps SUN - EARTH - MOON:
+ - MOON et EARTH orbitent ensemble et forment le système\\
+   EARTH\under{}MOON\under{}SYSTEM
+ - SUN et EARTH\under{}MOON\under{}SYSTEM orbitent ensemble et forment le système SOLAR\under{}SYSTEM
+Plus dans le détail :
+ - Les barycentres MOON\under{}BC et EARTH\under{}BC orbitent tous deux autour de EARTH\under{}MOON\under{}SYSTEM\under{}BC
+ - Les barycentres EARTH\under{}MOON\under{}SYSTEM\under{}BC et SUN\under{}BC orbitent tous deux autour de SOLAR\under{}SYSTEM\under{}BC
+
+- Point :: Un /point/ est un site de dimension 0.
+\scriptsize
+$$Point ~ \sqsubseteq ~ \text{bfo:"zero-dimensional spatial region"}$$
+\normalsize
+
+- hasBarycenter / isBarycenterOf :: Les choses célestes ont un barycentre
+\scriptsize
+$$\begin{align*}
+hasBarycenter : & ~ CelestialThing \to Point \\
+isBarycenterOf : & ~ Point \to CenestialThing ~ \equiv ~ hasBarycenter^-
+\end{align*}$$
+\normalsize
+
+- orbitsAround / isOrbitedBy :: Un point orbite autour d'un autre point
+\scriptsize
+$$\begin{align*}
+orbitAround : & ~ Point \to Point \\
+isOrbitedBy : & ~ Point \to Point ~ \equiv ~ orbitAround^-
+\end{aling*}$$
+\normalsize
+
+- orbitsWith :: Des choses célestes orbitent ensemble si leur barycentres orbitent autour d'un point commun
+\scriptsize
+$$orbitsWith ~ \equiv ~ hasBarycenter ~ \circ ~ orbitAround ~ \circ ~ isBarycenterOf$$
+\normalsize
+
+- orbitsIn / hasOrbitingComponent :: Une chose céleste $x$ orbite dans $y$ si le barycentre de $x$ orbite autour de celui de $y$. \\
+     /Note :/ ces relations définissent des ensembles imbriqués, elles ne sont pas transitives.
+     Elles sont sous-relations de /isPartOf/ et /hasPart/ (opérateurs méréologiques transitifs).
+\scriptsize
+$$\begin{align*}
+orbitsIn : & ~ CelestialThing \to CelestialThing \\
+ ~ \equiv & ~ hasBarycenter ~ \circ ~ orbitsAround ~ \circ ~ isBarycenterOf \\
+hasOrbitingComponent : & ~ CelestialThing \to CelestialThing ~ \equiv ~ orbitsIn^-
+\end{align*}$$
+\normalsize
+
+** Systèmes orbitaux
+
+Les systèmes orbitaux sont des regroupements de choses qui orbitent ensemble (/i.e./ dont les barycentres orbitent
+autour d'un point commun). Nous créons ainsi une nouvelle taxonomie, inférée, représentant les différents types
+de systèmes orbitaux classiques : planètes/satellites, étoiles multiples, systèmes planétaires et galaxies
+
+#+CAPTION: Relation d'orbitage : arborescence des concepts
+#+NAME: fig:orbi
+#+ATTR_LATEX: :width 150px
+[[./ims/concepts_orb.png]]
+
+
+- OrbitingSystem :: Un système orbital est une chose céleste dont le barycentre est orbité par des points
+\scriptsize
+$$OrbitingSystem ~ \equiv ~ CelestialObject ~ \sqcap ~ (\geq 1 ~ hasOrbitingComponent.CelestialObject)$$
+\normalsize
+
+- SatelliteSystem :: Un système satellitaire est un système orbital composé de planètes et de lunes
+\scriptsize
+$$
+SatelliteSystem ~ \equiv ~ OrbitingSystem \sqcap ~ (\forall hasOrbitingComponent.(Planet ~ \sqcup ~ Moon))$$
+\normalsize
+
+- StarSystem :: Un système stellaire (ou étoile multiple) est un système orbital composé uniquement d'étoiles. 
+		Parmi ceux-ci, on distingue les "étoiles unaires" (simples), binaires (doubles), ternaires (triples).
+\scriptsize
+$$\begin{align*}
+StarSystem ~ & \equiv ~ OrbitingSystem ~ \sqcap ~ (\forall hasOrbitingComponent.Star) \\
+UnaryStar ~ & \equiv ~ StarSystem ~ \sqcap (=1 ~ hasBarycenter.(=1 ~ isOrbitedBy.Star)) \\
+BinaryStar ~ & \equiv ~ StarSystem ~ \sqcap (=1 ~ hasBarycenter.(=2 ~ isOrbitedBy.Star)) \\
+TernaryStar ~ & \equiv ~ StarSystem ~ \sqcap (=1 ~ hasBarycenter.(=3 ~ isOrbitedBy.Star)) \\
+\end{align*}$$
+\normalsize
+/Note :/ nous ne pouvons pas utiliser ici la relation complexe /hasOrbitingComponent/ sous peine de bloquer le raisonneur.
+
+- PlanetarySystem :: Un système planétaire est un système orbital composé de systèmes stellaires,
+     de systèmes satellitaires et d'astéroides
+\scriptsize
+$$\begin{align*}
+PlanetarySystem ~ \equiv ~ & OrbitingSystem ~ \\
+\sqcap ~ & (\forall hasOrbitingComponent.(StarSystem ~ \sqcup ~ SatelliteSystem ~ \sqcup ~ Asteroid))
+\end{align*}$$
+\normalsize
+
+- Galaxy :: Une /galaxie/ est un système orbital composé de trous noirs et de systèmes planétaires
+\scriptsize
+$$Galaxy ~ \equiv ~ OrbitingSystem ~ \sqcap ~ (\forall hasOrbitingComponent.(BlackHole ~ \sqcup ~ PlanetarySystem))$$
+\normalsize
+
+
+* Cohérence de l'ontologie
+
+Nous utilisons le raisonneur =Hermit= pour assurer la cohérence de l'ontologie. Cela nous permet aussi d'inférer des relations, par exemple la figure [[fig:infer]] montre les relations inférées pour l'individu =dbpedia:Solar_System=.
+
+#+CAPTION: Inférence des relations concernant =dbpedia:Solar_System=
+#+NAME: fig:infer
+#+ATTR_LATEX: :width 300px
+[[./ims/infer.png]]
+
+* Trois questions de compétences
+
+Pour répondre à ces questions de compétances avec =SPARQL=, nous utilisons d'abord quelques règles
+=SWRL= redondantes avec nos définitions, puis les incorporons à l'ontologie. Cela a pour effet 
+d'écrire /en dur/ certaines relations inférées, afin que =SPARQL= puisse les utiliser.
+
+** Quels corps célestes gravitent dans le système solaire ?
+\scriptsize
+#+BEGIN_SRC sparql
+PREFIX hmp: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+SELECT ?x
+WHERE {
+    ?x a hmp:CelestialBody ; hmp:isPartOf dbpedia:Solar_System.
+}
+ORDER BY ?x
+#+END_SRC
+|------------------------------------------------------------------------|
+| x                                                                      |
+|------------------------------------------------------------------------|
+| http://dbpedia.org/resource/Callisto_(moon)	                    |
+| http://dbpedia.org/resource/Europa_(moon)	                      |
+| http://dbpedia.org/resource/Ganymede_(moon)	                    |
+| http://dbpedia.org/resource/Io_(moon)	                          |
+| http://dbpedia.org/resource/Jupiter	                            |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH	   |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#JUPITER	 |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#MOON	    |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SUN             |
+|------------------------------------------------------------------------|
+\normalsize
+
+** Combien d'éléments consituent les systèmes orbitaux ?
+\scriptsize
+#+BEGIN_SRC sparql
+PREFIX hmp: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#>
+SELECT ?x (COUNT(?y) as ?n)
+WHERE {
+    ?y hmp:orbitsIn ?x
+}
+GROUP BY ?x
+ORDER BY ?n ?x
+#+END_SRC
+|--------------------------------------------------------------------------+-----|
+| x                                                                        | y   |
+|--------------------------------------------------------------------------+-----|
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SUN_SYSTEM        | "1" |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#EARTH_MOON_SYSTEM | "2" |
+| http://dbpedia.org/resource/Solar_System                                 | "4" |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#SOLAR_SYSTEM      | "4" |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#JUPITER_SYSTEM    | "6" |
+|--------------------------------------------------------------------------+-----|
+\normalsize
+
+** Quels type d'objets célestes sont présents le système solaire ?
+\scriptsize
+#+BEGIN_SRC sparql
+PREFIX hmp: <http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+SELECT DISTINCT ?x
+WHERE {
+    ?x rdfs:subClassOf hmp:CelestialObject.
+    ?y a ?x.
+    ?y hmp:isPartOf dbpedia:Solar_System
+}
+#+END_SRC
+|----------------------------------------------------------------------|
+| x                                                                    |
+|----------------------------------------------------------------------|
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#CelestialBody |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Planet        |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Moon          |
+| http://www.semanticweb.org/hut-mar-pom/cosmic-ontology#Star          |
+|----------------------------------------------------------------------|
