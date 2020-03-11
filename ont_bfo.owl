@@ -16,16 +16,16 @@
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Import>http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl</Import>
     <Declaration>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Asteroid"/>
+        <Class IRI="#Asteroid"/>
     </Declaration>
     <Declaration>
-        <Class IRI="http://dbpedia.org/page/Solar_System#BlackHole"/>
+        <Class IRI="#BlackHole"/>
     </Declaration>
     <Declaration>
-        <Class IRI="http://dbpedia.org/page/Solar_System#NeutronStar"/>
+        <Class IRI="#NeutronStar"/>
     </Declaration>
     <Declaration>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Quasar"/>
+        <Class IRI="#Quasar"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://purl.obolibrary.org/obo/BFO_0000018"/>
@@ -118,13 +118,13 @@
         <ObjectProperty IRI="#orbitsWith"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasLuminosity"/>
+        <DataProperty IRI="#hasLuminosity"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasMass"/>
+        <DataProperty IRI="#hasMass"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasSize"/>
+        <DataProperty IRI="#hasSize"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://dbpedia.org/resource/Jupiter"/>
@@ -205,10 +205,10 @@
         <Datatype abbreviatedIRI="rdf:PlainLiteral"/>
     </Declaration>
     <EquivalentClasses>
-        <Class IRI="http://dbpedia.org/page/Solar_System#BlackHole"/>
+        <Class IRI="#BlackHole"/>
         <ObjectIntersectionOf>
             <DataSomeValuesFrom>
-                <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasMass"/>
+                <DataProperty IRI="#hasMass"/>
                 <DatatypeRestriction>
                     <Datatype abbreviatedIRI="xsd:double"/>
                     <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
@@ -217,7 +217,7 @@
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasSize"/>
+                <DataProperty IRI="#hasSize"/>
                 <DatatypeRestriction>
                     <Datatype abbreviatedIRI="xsd:double"/>
                     <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
@@ -247,7 +247,7 @@
             <ObjectAllValuesFrom>
                 <ObjectProperty IRI="#hasOrbitingComponent"/>
                 <ObjectUnionOf>
-                    <Class IRI="http://dbpedia.org/page/Solar_System#BlackHole"/>
+                    <Class IRI="#BlackHole"/>
                     <Class IRI="#PlanetarySystem"/>
                 </ObjectUnionOf>
             </ObjectAllValuesFrom>
@@ -267,7 +267,7 @@
             <ObjectAllValuesFrom>
                 <ObjectProperty IRI="#hasOrbitingComponent"/>
                 <ObjectUnionOf>
-                    <Class IRI="http://dbpedia.org/page/Solar_System#Asteroid"/>
+                    <Class IRI="#Asteroid"/>
                     <Class IRI="#SatelliteSystem"/>
                     <Class IRI="#StarSystem"/>
                 </ObjectUnionOf>
@@ -324,13 +324,13 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <SubClassOf>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Asteroid"/>
+        <Class IRI="#Asteroid"/>
         <Class IRI="#CelestialBody"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Asteroid"/>
+        <Class IRI="#Asteroid"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasSize"/>
+            <DataProperty IRI="#hasSize"/>
             <DatatypeRestriction>
                 <Datatype abbreviatedIRI="xsd:double"/>
                 <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
@@ -340,21 +340,21 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://dbpedia.org/page/Solar_System#BlackHole"/>
+        <Class IRI="#BlackHole"/>
         <Class IRI="#CelestialBody"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://dbpedia.org/page/Solar_System#NeutronStar"/>
+        <Class IRI="#NeutronStar"/>
         <Class IRI="#CelestialBody"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Quasar"/>
+        <Class IRI="#Quasar"/>
         <Class IRI="#Galaxy"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Quasar"/>
+        <Class IRI="#Quasar"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasLuminosity"/>
+            <DataProperty IRI="#hasLuminosity"/>
             <DatatypeRestriction>
                 <Datatype abbreviatedIRI="xsd:double"/>
                 <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
@@ -417,7 +417,7 @@
     <SubClassOf>
         <Class IRI="#Planet"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasMass"/>
+            <DataProperty IRI="#hasMass"/>
             <DatatypeRestriction>
                 <Datatype abbreviatedIRI="xsd:double"/>
                 <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
@@ -459,7 +459,7 @@
     <SubClassOf>
         <Class IRI="#Star"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasLuminosity"/>
+            <DataProperty IRI="#hasLuminosity"/>
             <DatatypeRestriction>
                 <Datatype abbreviatedIRI="xsd:double"/>
                 <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
@@ -477,7 +477,7 @@
         <Class IRI="#StarSystem"/>
     </SubClassOf>
     <ClassAssertion>
-        <Class IRI="http://dbpedia.org/page/Solar_System#Asteroid"/>
+        <Class IRI="#Asteroid"/>
         <NamedIndividual IRI="#CERES"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -513,7 +513,7 @@
         <NamedIndividual IRI="#SUN_SYSTEM"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://dbpedia.org/page/Solar_System#BlackHole"/>
+        <Class IRI="#BlackHole"/>
         <NamedIndividual IRI="#SAGITTARIUS_A*"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -619,7 +619,7 @@
         <NamedIndividual IRI="#SAGITTARIUS_A*_BC"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasLuminosity"/>
+        <DataProperty IRI="#hasLuminosity"/>
         <NamedIndividual IRI="#SUN"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
     </DataPropertyAssertion>
@@ -701,19 +701,19 @@
         <ObjectProperty IRI="#orbitsWith"/>
     </SubObjectPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasMass"/>
+        <DataProperty IRI="#hasMass"/>
         <DataProperty abbreviatedIRI="owl:topDataProperty"/>
     </SubDataPropertyOf>
     <DataPropertyRange>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasLuminosity"/>
+        <DataProperty IRI="#hasLuminosity"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasMass"/>
+        <DataProperty IRI="#hasMass"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="http://dbpedia.org/page/Solar_System#hasSize"/>
+        <DataProperty IRI="#hasSize"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DLSafeRule>
@@ -855,37 +855,37 @@
     </DLSafeRule>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#Asteroid</IRI>
+        <IRI>#Asteroid</IRI>
         <Literal>Un astéroide est un corps celeste dont les dimention sont comprises entre un mètre et quelques centaines de km</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#BlackHole</IRI>
+        <IRI>#BlackHole</IRI>
         <Literal>Un trou noir est un objet céleste si compact que l&apos;intensité de son champ gravitationnel empêche toute forme de matière ou de rayonnement de s’en échapper.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#NeutronStar</IRI>
+        <IRI>#NeutronStar</IRI>
         <Literal>Une étoile à neutrons est un astre principalement composé de neutrons maintenus ensemble par les forces de gravitation.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#Quasar</IRI>
+        <IRI>#Quasar</IRI>
         <Literal>Un quasar est une galaxie qui est très lumineuse.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#hasLuminosity</IRI>
+        <IRI>#hasLuminosity</IRI>
         <Literal>Luminosity is an absolute measure of radiated electromagnetic power (light), the radiant power emitted by a light-emitting object. (measured in Watts, normalized by Sun&apos;s luminosity)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#hasMass</IRI>
+        <IRI>#hasMass</IRI>
         <Literal>In solar mass.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://dbpedia.org/page/Solar_System#hasSize</IRI>
+        <IRI>#hasSize</IRI>
         <Literal>Roughly corresponds to the maximum radius of an object.
 (this is not a real measure, but is used to qualify &quot;big&quot; and &quot;small&quot; objects)</Literal>
     </AnnotationAssertion>
